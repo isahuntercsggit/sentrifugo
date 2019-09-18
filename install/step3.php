@@ -26,6 +26,10 @@
     $msgarray = array();
     $app_name = defined('APPLICATION_NAME')?APPLICATION_NAME:'';
     $email = defined('SUPERADMIN_EMAIL')?SUPERADMIN_EMAIL:'';
+    $appsetemail =  getenv("SentrifugoEmail"); 
+    $appsetappname = getenv("SentrifugoAppName");
+    $_POST['email'] = $appsetemail;
+    $_POST['app_name'] = $appsetappname;
     if(!empty($_POST))
     {
         $app_name = $_POST['app_name'];
