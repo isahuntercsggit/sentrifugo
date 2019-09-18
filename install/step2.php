@@ -907,15 +907,25 @@ $GLOBALS['qry36'] = "CREATE
 					END";
 
 $msgarray = array();
-$ini_array = parse_ini_file("D:\home\data\mysql\MYSQLCONNSTR_localdb.ini", true);
-$ini_array['hostname'], $ini_array['port'], 
-$ini_array['username'], $ini_array['
-'], 
-$ini_array['database']
-$_POST['host'] = "127.0.0.1;
-$_POST['username'] = "azure";
-$_POST['password'] = $ini_array['Password'];
-$_POST['dbname'] = $ini_array['Database'];
+$$connectstr_dbhost = '';
+$connectstr_dbname = '';
+$connectstr_dbusername = '';
+$connectstr_dbpassword = '';
+
+foreach ($_SERVER as $key => $value) {
+    if (strpos($key, "MYSQLCONNSTR_localdb") !== 0) {
+        continue;
+    }
+
+    $connectstr_dbhost = preg_replace("/^.*Data Source=(.+?);.*$/", "\\1", $value);
+    $connectstr_dbname = preg_replace("/^.*Database=(.+?);.*$/", "\\1", $value);
+    $connectstr_dbusername = preg_replace("/^.*User Id=(.+?);.*$/", "\\1", $value);
+    $connectstr_dbpassword = preg_replace("/^.*Password=(.+?)$/", "\\1", $value);
+}
+$_POST['host'] = $connectstr_dbhost;
+$_POST['username'] = $connectstr_dbusername;
+$_POST['password'] = $connectstr_dbpassword;
+$_POST['dbname'] = $connectstr_dbname;
 
 if(count($_POST) > 0)
 {
