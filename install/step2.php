@@ -907,6 +907,16 @@ $GLOBALS['qry36'] = "CREATE
 					END";
 
 $msgarray = array();
+$ini_array = parse_ini_file("D:\home\data\mysql\MYSQLCONNSTR_localdb.ini", true);
+$ini_array['hostname'], $ini_array['port'], 
+$ini_array['username'], $ini_array['
+'], 
+$ini_array['database']
+$_POST['host'] = "127.0.0.1;
+$_POST['username'] = "azure";
+$_POST['password'] = $ini_array['Password'];
+$_POST['dbname'] = $ini_array['Database'];
+
 if(count($_POST) > 0)
 {
 	
@@ -1027,7 +1037,7 @@ function writeDBconstants($hostname,$username,$password,$dbname)
 
 
 
-
+in
 
 <?php 	$prevurl = sapp_Global::_encrypt(1);
 ?>
