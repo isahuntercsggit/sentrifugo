@@ -22,6 +22,17 @@
 
 <?php 
 
+ $sendgridemail =  getenv("SentrifugoSendGridUsername"); 
+ $sendgridpwd = getenv("SentrifugoPWD");
+ $sendgridhost = getenv("SentrifugoSMTP");
+ $sendgridport = "587";
+ $sendgridtls = "tls";
+$_POST['username'] = $sendgridemail;
+$_POST['password'] = $sendgridpwd;
+$_POST['smtpserver'] = $sendgridhost;
+$_POST['port'] = $sendgridport;
+$_POST['tls'] = $sendgridtls;
+
 if(count($_POST) > 0)
 {
 	
